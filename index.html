@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f3ef;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: white;
+      border-bottom: 1px solid #eee;
+      color: #333;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-section img {
+      height: 60px;
+      margin-right: 12px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      font-size: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .start-btn {
+      padding: 8px 18px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-btn {
+      padding: 8px 18px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      background: white;
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .language-select {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    /* Dark hero section styles */
+    .hero-section {
+      display: flex;
+      background-color: #130f04;
+      padding: 60px 40px;
+      gap: 60px;
+      align-items: center;
+      color: #fff;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 450px;
+      font-family: serif;
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    .hero-text h2 {
+      font-size: 32px;
+      font-weight: 400;
+      margin: 0 0 15px 0;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      font-size: 14px;
+      margin: 0 0 25px 0;
+      color: #ddd;
+    }
+
+    .hero-text .button {
+      display: inline-block;
+      background-color: white;
+      color: black;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text .button:hover {
+      background-color: #e1d9cc;
+    }
+
+    .hero-images {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      border: 3px solid white;
+      max-width: 600px;
+    }
+
+    .hero-images .big-img {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      border: 3px solid white;
+      overflow: hidden;
+    }
+
+    .hero-images .big-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-images .small-img1,
+    .hero-images .small-img2 {
+      border: 3px solid white;
+      overflow: hidden;
+    }
+
+    .hero-images .small-img1 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    .hero-images .small-img2 {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    .hero-images .small-img1 img,
+    .hero-images .small-img2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* New sections styling */
+
+    section {
+      max-width: 900px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 40px 50px;
+      color: #130f04;
+      box-shadow: 0 5px 15px rgba(19,15,4,0.1);
+    }
+
+    section h2 {
+      font-family: serif;
+      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #130f04;
+    }
+
+    /* About Us */
+    #about p {
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* Portfolio grid */
+    #portfolio .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    #portfolio .gallery-grid img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(19,15,4,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    #portfolio .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(19,15,4,0.3);
+    }
+
+    /* Services */
+    #services ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    #services ul li {
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    /* Contact form */
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    #contact label {
+      font-weight: 600;
+      font-size: 16px;
+      color: #130f04;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 10px 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #contact textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    #contact button {
+      background-color: #130f04;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 12px 0;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #3d2f0f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Logo and Title -->
+    <div class="logo-section">
+      <img src="images/photo.png" alt="Logo" />
+    </div>
+
+    <!-- Center Navigation -->
+    <nav>
+      <a href="#portfolio">Sample Galleries</a>
+      <a href="#services">Pricing</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Right Side Buttons -->
+    <div class="right-section">
+      <button class="start-btn">START FREE</button>
+      <button class="login-btn">Login</button>
+      <select class="language-select">
+        <option value="ENG">English - ENG</option>
+        <option value="ESP">Español - ESP</option>
+        <option value="FRA">Français - FRA</option>
+        <option value="PL">Polski - PL</option>
+        <option value="POR">Português - POR</option>
+        <option value="DE">Deutsch - DE</option>
+        <option value="IT">Italiano - IT</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Dark hero section -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h2>Elevate Your Photography<br />to a Successful Business</h2>
+      <p>
+        Galleries | Print Store | Marketing Automations<br />
+        Slideshows | Blogs | AI Search
+      </p>
+      <a href="#" class="button">START FOR FREE</a>
+    </div>
+
+    <div class="hero-images">
+      <div class="big-img">
+        <img src="images/p1.png" alt="Main model" />
+      </div>
+      <div class="small-img1">
+        <img src="images/p2.png" alt="Side model 1" />
+      </div>
+      <div class="small-img2">
+        <img src="images/p3.png" alt="Side model 2" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Us</h2>
+    <p>
+      At Pic-Snap, we are passionate about capturing moments that tell your story. With over a decade of experience, we specialize in portrait, event, and commercial photography, delivering stunning visuals that elevate your brand and personal memories alike.
+    </p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" aria-labelledby="portfolio-title">
+    <h2 id="portfolio-title">Sample Galleries</h2>
+    <div class="gallery-grid">
+      <img src="images/p1.png" alt="Gallery image 1" />
+      <img src="images/p2.png" alt="Gallery image 2" />
+      <img src="images/p3.png" alt="Gallery image 3" />
+    </div>
+  </section>
+
+  <!-- Services & Pricing Section -->
+  <section id="services" aria-labelledby="services-title">
+    <h2 id="services-title">Services & Pricing</h2>
+    <ul>
+      <li>Portrait Photography Sessions - Starting at $150</li>
+      <li>Event Photography Packages - Starting at $500</li>
+      <li>Print Store with premium paper and framing options</li>
+      <li>Marketing Automations to promote your photos easily</li>
+      <li>Custom Slideshows & Blogs for storytelling</li>
+    </ul>
+  </section>
+
+  <!-- Contact / Booking Section -->
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact & Booking</h2>
+    <form>
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="Your email address" />
+
+      <label for="message">Message / Booking Details *</label>
+      <textarea id="message" name="message" required placeholder="Tell us about your request"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+</body>
+</html>
